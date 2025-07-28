@@ -7,6 +7,11 @@ from app.models import Menu
 def health():
     return jsonify({"status": "healthy"}), 200
 
+@app.route('/hello')
+def health():
+    print("hello")
+    return jsonify({"status": "hello"}), 200
+
 @app.route('/')
 def home():
     return jsonify({ "status": "ok" })
