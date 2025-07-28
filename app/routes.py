@@ -3,9 +3,13 @@ from app import app
 from app import db
 from app.models import Menu
 
+@app.route('/health')
+def health():
+    return jsonify({"status": "healthy"}), 200
+
 @app.route('/')
 def home():
-	return jsonify({ "status": "ok" })
+    return jsonify({ "status": "ok" })
 
 @app.route('/menu')
 def menu():

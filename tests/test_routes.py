@@ -27,6 +27,12 @@ class BasicTests(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def test_health(self):
+        response = self.app.get('/health', follow_redirects=True)
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.mimetype, 'application/json')
+        body = json.loads(response.data)
+        self.assertEqual(body['status'], 'healthy')
     def test_home(self):
         response = self.app.get('/', follow_redirects=True)
         self.assertEqual(response.status_code, 200)
